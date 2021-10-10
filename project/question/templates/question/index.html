@@ -1,0 +1,24 @@
+<center>
+{% load static %}
+
+<h1>Pick a Question</h1>
+
+<link rel="stylesheet" type="text/css" href="{% static 'question/style.css' %}">
+
+{% if latest_question_list %}
+    <ul>
+    {% for question in latest_question_list %}
+    <!--    
+    <li><a href="/question/{{ question.id }}/">{{ question.question_text }}</a></li>
+    --->
+    <li>{{ question.pub_date }}
+    <a href="{% url 'question:detail' question.id %}">
+    {{ question.question_text }}
+    </a>
+    </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No choices are available.</p>
+{% endif %}
+</center>
